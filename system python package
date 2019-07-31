@@ -1,2 +1,54 @@
 Python 3.6.8 (default, Jan 14 2019, 11:02:34) 
 [GCC 8.0.1 20180414 (experimental) [trunk revision 259383]] on linux
+====================================================================
+20190720    Sat, Jul 20, 2019 11:16 PM
+(dwave) lonnie1313250@lonnie1313250-VirtualBox:~$ dwave ping
+Using endpoint: https://cloud.dwavesys.com/sapi
+Using solver: DW_2000Q_5
+Submitted problem ID: 94b355e1-87ce-4880-9a5f-f1c4edbfe3d3
+
+Wall clock time:
+ * Solver definition fetch: 991.099 ms
+ * Problem submit and results fetch: 537.979 ms
+ * Total: 1529.079 ms
+
+QPU timing:
+ * qpu_sampling_time = 315 us
+ * qpu_anneal_time_per_sample = 20 us
+ * qpu_readout_time_per_sample = 274 us
+ * qpu_access_time = 10007 us
+ * qpu_access_overhead_time = 1130 us
+ * qpu_programming_time = 9692 us
+ * qpu_delay_time_per_sample = 21 us
+ * total_post_processing_time = 277 us
+ * post_processing_overhead_time = 277 us
+ * total_real_time = 10007 us
+ * run_time_chip = 315 us
+ * anneal_time_per_run = 20 us
+ * readout_time_per_run = 274 us
+ ================================================================
+ 20190730   Tue, Jul 30, 2019 11:21 PM
+ (dwave) lonnie1313250@ubuntuServ1804:~$ dwave ping
+Using endpoint: https://cloud.dwavesys.com/sapi
+Using solver: DW_2000Q_5
+Submitted problem ID: ec4ed609-8ffc-488d-999b-4174af1b0ce2
+
+Wall clock time:
+ * Solver definition fetch: 1567.271 ms
+ * Problem submit and results fetch: 552.727 ms
+ * Total: 2119.998 ms
+
+QPU timing:
+ * total_real_time = 10013 us
+ * qpu_delay_time_per_sample = 21 us
+ * anneal_time_per_run = 20 us
+ * post_processing_overhead_time = 3791 us
+ * qpu_anneal_time_per_sample = 20 us
+ * readout_time_per_run = 274 us
+ * qpu_access_overhead_time = 1466 us
+ * qpu_sampling_time = 315 us
+ * total_post_processing_time = 3791 us
+ * qpu_programming_time = 9698 us
+ * run_time_chip = 315 us
+ * qpu_access_time = 10013 us
+ * qpu_readout_time_per_sample = 274 us
