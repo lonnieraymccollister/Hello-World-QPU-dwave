@@ -1,0 +1,38 @@
+import dwavebinarycsp as dbc
+# Add an AND gate as a constraint to CSP and_csp defined for binary variables 
+and_gate = dbc.factories.and_gate(["x1", "x2", "x3"])
+and_csp = dbc.ConstraintSatisfactionProblem('BINARY')
+and_csp.add_constraint(and_gate)
+
+# Test that for input x1,x2=1,1 the output is x3=1 (both switches on and light shining)
+#and_csp.check({"x1": 1, "x2": 1, "x3": 1})
+print(and_csp.check({"x1": 1, "x2": 1, "x3": 1}))
+#-------------------------------------------------------------------
+# Use itertools to produce all possible 3-bit binary combinations for x1, x2, x3
+import itertools
+configurations = []
+for (x1, x2, x3) in  list(itertools.product([0, 1], repeat=3)):
+     E = 3*x3+x1*x2-2*x1*x3-2*x2*x3
+     configurations.append((E, x1, x2, x3))
+# Sort from lowest to highest value of the BQM
+configurations.sort()
+# Print BQM value under "E" and all configurations under "x1, x2, x3"
+print("E, x1, x2, x3") 
+#configurations
+print(configurations)
+#-------------------------------------------------------------------
+# Convert the CSP into BQM and_bqm
+and_bqm = dbc.stitch(and_csp)
+and_bqm.remove_offset()
+# Print the linear and quadratic coefficients. These are the programable inputs to a D-Wave system
+print(and_bqm.linear)
+print(and_bqm.linear)
+
+
+
+program output
+True
+E, x1, x2, x3
+[(0, 0, 0, 0), (0, 0, 1, 0), (0, 1, 0, 0), (0, 1, 1, 1), (1, 0, 1, 1), (1, 1, 0, 1), (1, 1, 1, 0), (3, 0, 0, 1)]
+{'x1': 0.0, 'x2': 0.0, 'x3': 6.0}
+{'x1': 0.0, 'x2': 0.0, 'x3': 6.0}
