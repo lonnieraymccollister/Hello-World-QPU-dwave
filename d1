@@ -15,7 +15,12 @@ for (x1, x2, x3) in  list(itertools.product([0, 1], repeat=3)):
      E = 3*x3+x1*x2-2*x1*x3-2*x2*x3
      configurations.append((E, x1, x2, x3))
 # Sort from lowest to highest value of the BQM
-configurations.sort()
+configurations.soTrue
+E, x1, x2, x3
+[(0, 0, 0, 0), (0, 0, 1, 0), (0, 1, 0, 0), (0, 1, 1, 1), (1, 0, 1, 1), (1, 1, 0, 1), (1, 1, 1, 0), (3, 0, 0, 1)]
+{'x1': 0.0, 'x2': 0.0, 'x3': 6.0}
+{('x1', 'x2'): 2.0, ('x1', 'x3'): -4.0, ('x2', 'x3'): -4.0}
+[Sample(sample={'x1': 0, 'x2': 0, 'x3': 0}, energy=0.0, num_occurrences=1), Sample(sample={'x1': 1, 'x2': 0, 'x3': 0}, energy=0.0, num_occurrences=1), Sample(sample={'x1': 0, 'x2': 1, 'x3': 0}, energy=0.0, num_occurrences=1), Sample(sample={'x1': 1, 'x2': 1, 'x3': 1}, energy=0.0, num_occurrences=1), Sample(sample={'x1': 1, 'x2': 1, 'x3': 0}, energy=2.0, num_occurrences=1), Sample(sample={'x1': 0, 'x2': 1, 'x3': 1}, energy=2.0, num_occurrences=1), Sample(sample={'x1': 1, 'x2': 0, 'x3': 1}, energy=2.0, num_occurrences=1), Sample(sample={'x1': 0, 'x2': 0, 'x3': 1}, energy=6.0, num_occurrences=1)]rt()
 # Print BQM value under "E" and all configurations under "x1, x2, x3"
 print("E, x1, x2, x3") 
 #configurations
@@ -26,8 +31,13 @@ and_bqm = dbc.stitch(and_csp)
 and_bqm.remove_offset()
 # Print the linear and quadratic coefficients. These are the programable inputs to a D-Wave system
 print(and_bqm.linear)
-print(and_bqm.linear)
-
+print(and_bqm.quadratic)
+# Use a dimod test sampler that gives the BQM value for all values of its variables
+from dimod import ExactSolver
+sampler = ExactSolver()
+# Solve the BQM
+solution = sampler.sample(and_bqm)
+print(list(solution.data()))
 
 
 program output
@@ -35,4 +45,5 @@ True
 E, x1, x2, x3
 [(0, 0, 0, 0), (0, 0, 1, 0), (0, 1, 0, 0), (0, 1, 1, 1), (1, 0, 1, 1), (1, 1, 0, 1), (1, 1, 1, 0), (3, 0, 0, 1)]
 {'x1': 0.0, 'x2': 0.0, 'x3': 6.0}
-{'x1': 0.0, 'x2': 0.0, 'x3': 6.0}
+{('x1', 'x2'): 2.0, ('x1', 'x3'): -4.0, ('x2', 'x3'): -4.0}
+[Sample(sample={'x1': 0, 'x2': 0, 'x3': 0}, energy=0.0, num_occurrences=1), Sample(sample={'x1': 1, 'x2': 0, 'x3': 0}, energy=0.0, num_occurrences=1), Sample(sample={'x1': 0, 'x2': 1, 'x3': 0}, energy=0.0, num_occurrences=1), Sample(sample={'x1': 1, 'x2': 1, 'x3': 1}, energy=0.0, num_occurrences=1), Sample(sample={'x1': 1, 'x2': 1, 'x3': 0}, energy=2.0, num_occurrences=1), Sample(sample={'x1': 0, 'x2': 1, 'x3': 1}, energy=2.0, num_occurrences=1), Sample(sample={'x1': 1, 'x2': 0, 'x3': 1}, energy=2.0, num_occurrences=1), Sample(sample={'x1': 0, 'x2': 0, 'x3': 1}, energy=6.0, num_occurrences=1)]
